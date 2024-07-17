@@ -1,0 +1,1 @@
+F:\projects\medi_app\android\app\src\main\kotlin\com\example\medi_app\MainActivity.kt

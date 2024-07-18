@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+
       theme: appTheme, // Apply the appTheme defined in colors.dart
       debugShowCheckedModeBanner: false,
       home: const WaitingScreen()

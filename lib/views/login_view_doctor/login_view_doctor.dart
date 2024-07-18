@@ -22,7 +22,7 @@ class LoginViewDoctor extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: appTheme.appBarTheme.backgroundColor, // Use the app bar color from the theme
         title: const Text(
-          "Doctor Details",
+          "Doctor Profile",
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
       ),
@@ -30,7 +30,7 @@ class LoginViewDoctor extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            // First container
+            // First container for doctor profile name and category
             Container(
               margin: const EdgeInsets.all(12),
               padding: const EdgeInsets.all(12),
@@ -38,7 +38,7 @@ class LoginViewDoctor extends StatelessWidget {
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.grey.shade400, width: 2.0),
                 borderRadius: BorderRadius.circular(12),
-                color: Colors.grey.shade200,
+                color: Colors.grey.shade100,
               ),
               child: Row(
                 children: [
@@ -53,6 +53,7 @@ class LoginViewDoctor extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
+                        // Text for doc name
                         Text(
                           doc['docName'],
                           style: appTheme.textTheme.bodyLarge, // Use the text style from the theme
@@ -61,6 +62,7 @@ class LoginViewDoctor extends StatelessWidget {
                           maxLines: 1,
                         ),
                         const Gap(5),
+                        //doc category
                         Text(
                           doc['docCategory'],
                           style: appTheme.textTheme.bodyLarge?.copyWith(color: Colors.red),
@@ -86,7 +88,7 @@ class LoginViewDoctor extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 12),
               width: double.infinity,
               decoration: BoxDecoration(
-                color: Colors.grey.shade200,
+                color: Colors.grey.shade100,
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(color: Colors.grey.shade400, width: 2.0),
               ),

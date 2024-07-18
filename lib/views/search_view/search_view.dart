@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:medi_app/consts/colors.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../../consts/images.dart';
@@ -51,7 +52,7 @@ class SearchView extends StatelessWidget {
             padding: const EdgeInsets.all(10.0),
             child: GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
+                crossAxisCount: 1,
                 mainAxisExtent: 170,
                 crossAxisSpacing: 8,
                 mainAxisSpacing: 8,
@@ -66,23 +67,24 @@ class SearchView extends StatelessWidget {
                   child: Container(
                     clipBehavior: Clip.hardEdge,
                     decoration: BoxDecoration(
-                      color: Colors.grey,
+                      color: appTheme.cardColor,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     margin: const EdgeInsets.only(right: 10),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
                           width: 130,
                           height: 120,
-                          color: Colors.grey.shade500,
+                          color: appTheme.cardColor,
                           child: Image.asset(
                             fit: BoxFit.fill,
                             AppAssets.signUp,
                           ),
                         ),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
                               doc['docName'],

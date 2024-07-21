@@ -21,7 +21,7 @@ class _HomeState extends State<Home> {
   List screenList = [
     const HomeView(),
     const AppointmentView(),
-    const MyPeshawarScreen(),
+    MapScreen(),
     const Category(),
     const SettingView(),
   ];

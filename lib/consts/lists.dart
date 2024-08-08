@@ -11,17 +11,19 @@ var iconList = [
   AppAssets.icLungs,
   AppAssets.icStomach,
   AppAssets.icTeeth,
+  AppAssets.icHeart
 
 ];
 
 var iconTitleList = [
-  AppStrings.body,
+  AppStrings.medical,
   AppStrings.ear,
   AppStrings.eye,
   AppStrings.kidney,
   AppStrings.lungs,
   AppStrings.stomach,
-  AppStrings.teeth,
+  AppStrings.dental,
+  AppStrings.heart,
 
 ];
 

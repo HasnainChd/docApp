@@ -16,60 +16,57 @@ class AppointmentDetails extends StatelessWidget {
           style: Theme.of(context).appBarTheme.titleTextStyle,
         ),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            "Select appointment day",
-            style: TextStyle(fontWeight: FontWeight.bold,),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Card(
+          elevation: 4.0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
           ),
-          const Gap(10),
-          Text(
-            doc['appDay'],
-            style: const TextStyle(fontWeight: FontWeight.bold, ),
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildDetailSection("Appointment Day", doc['appDay']),
+                const Gap(20),
+                _buildDetailSection("Appointment Time", doc['appTime']),
+                const Gap(20),
+                _buildDetailSection("Mobile Number", doc['appPhone']),
+                const Gap(20),
+                _buildDetailSection("Full Name", doc['appName']),
+                const Gap(20),
+                _buildDetailSection("Message", doc['appMessage']),
+              ],
+            ),
           ),
-          const Gap(20),
-          const Text(
-            "Select appointment time",
-            style: TextStyle(fontWeight: FontWeight.bold,),
-          ),
-          const Gap(10),
-          Text(
-            doc['appTime'],
-            style: const TextStyle(fontWeight: FontWeight.bold,),
-          ),
-          const Gap(20),
-          const Text(
-            "Mobile Number",
-            style: TextStyle(fontWeight: FontWeight.bold, ),
-          ),
-          const Gap(10),
-          Text(
-            doc['appPhone'],
-            style: const TextStyle(fontWeight: FontWeight.bold,),
-          ),
-          const Gap(20),
-          const Text(
-            "Full Name",
-            style: TextStyle(fontWeight: FontWeight.bold,),
-          ),
-          const Gap(10),
-          Text(
-            doc['appName'],
-            style: const TextStyle(fontWeight: FontWeight.bold, ),
-          ),
-          const Gap(20),
-          const Text(
-            "Message",
-            style: TextStyle(fontWeight: FontWeight.bold,),
-          ),
-          const Gap(10),
-          Text(
-            doc['appMessage'],
-            style: const TextStyle(fontWeight: FontWeight.bold,),
-          ),
-        ],
+        ),
       ),
+    );
+  }
+
+  Widget _buildDetailSection(String title, String content) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+            color: Colors.grey,
+          ),
+        ),
+        const Gap(8),
+        Text(
+          content,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+            color: Colors.black87,
+          ),
+        ),
+      ],
     );
   }
 }

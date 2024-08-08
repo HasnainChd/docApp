@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 import '../../consts/colors.dart';
 import '../../consts/images.dart';
@@ -15,8 +14,6 @@ class LoginViewDoctor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle text = const TextStyle(fontFamily: 'RobotoSlab', color: Colors.blue, fontSize: 25);
-    TextStyle text2 = const TextStyle(fontFamily: 'RobotoSlab', color: Colors.red, fontSize: 16);
 
     return Scaffold(
       appBar: AppBar(
@@ -66,15 +63,6 @@ class LoginViewDoctor extends StatelessWidget {
                         Text(
                           doc['docCategory'],
                           style: appTheme.textTheme.bodyLarge?.copyWith(color: Colors.red),
-                        ),
-                        const Gap(15),
-                        VxRating(
-                          onRatingUpdate: (value) {},
-                          selectionColor: Colors.yellow,
-                          count: 5,
-                          maxRating: 5,
-                          value: double.parse(doc['docRating'].toString()),
-                          stepInt: true,
                         ),
                       ],
                     ),

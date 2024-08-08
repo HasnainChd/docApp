@@ -8,6 +8,7 @@ import '../../consts/strings.dart';
 import '../../controllers/auth_controller.dart';
 import '../../res/components/custom_elevated_button.dart';
 import '../../res/components/custom_textfield.dart';
+import '../Home/home.dart';
 import '../Home/home_view.dart';
 import '../appointment_view/appointment_view.dart';
 
@@ -61,9 +62,14 @@ class _SignupViewState extends State<SignupView> {
                       if (value == null || value.isEmpty) {
                         return 'Please enter your name';
                       }
+                      final alphabeticPattern = RegExp(r'^[a-zA-Z]+$');
+                      if (!alphabeticPattern.hasMatch(value)) {
+                        return 'Only alphabetic characters are allowed';
+                      }
                       return null;
                     },
                   ),
+
                   const Gap(15),
                   CustomTextField(
                     hint: "Email",
@@ -92,6 +98,7 @@ class _SignupViewState extends State<SignupView> {
                   ),
                   const Gap(15),
                   SwitchListTile(
+                    inactiveTrackColor: Colors.grey,
                     value: isDoctor,
                     onChanged: (newValue) {
                       setState(() {
@@ -180,9 +187,11 @@ class _SignupViewState extends State<SignupView> {
                       if (_formKey.currentState!.validate()) {
                         await controller.signupUser(isDoctor);
                         if (controller.userCredential != null) {
-                          Get.off(() => const AppointmentView());
+                          if(isDoctor) {
+                            Get.off(() => const AppointmentView());
+                          }
                         } else {
-                          Get.off(const HomeView());
+                          Get.off(const Home());
                         }
                       }
                     },

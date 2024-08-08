@@ -1,16 +1,18 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:medi_app/consts/images.dart';
 import 'package:medi_app/views/google_map/user_location.dart';
 
 class MapScreen extends StatefulWidget {
+  const MapScreen({super.key});
+
   @override
-  _MapScreenState createState() => _MapScreenState();
+  MapScreenState createState() => MapScreenState();
 }
 
-class _MapScreenState extends State<MapScreen> {
+class MapScreenState extends State<MapScreen> {
   GoogleMapController? mapController;
   Position? currentPosition;
   final Set<Marker> _markers = {};
@@ -24,16 +26,23 @@ class _MapScreenState extends State<MapScreen> {
     _loadCurrentLocation();
   }
 
+  // Function to determine gender based on doctor's name
+  String determineGender(String name) {
+    return name.endsWith('a') ? 'female' : 'male';
+  }
+
   void _loadCurrentLocation() async {
     try {
       currentPosition = await locationService.determinePosition();
       setState(() {
-        // Add a marker or blue filled circle at the user's current location
         _markers.add(
           Marker(
-            markerId: MarkerId('currentPosition'),
+            markerId: const MarkerId('currentPosition'),
             position: LatLng(currentPosition!.latitude, currentPosition!.longitude),
             icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
+            infoWindow: const InfoWindow(
+              title: 'ME',
+            ),
           ),
         );
       });
@@ -42,8 +51,9 @@ class _MapScreenState extends State<MapScreen> {
       ));
       _fetchNearbyDoctors();
     } catch (e) {
-      // Handle errors here
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      } // Handle errors here
     }
   }
 
@@ -79,9 +89,9 @@ class _MapScreenState extends State<MapScreen> {
               position: LatLng(docLat, docLng),
               infoWindow: InfoWindow(
                 title: data['docName'],
-                snippet: 'Rating: ${data['docRating']} | Distance: $distanceString km',
+                snippet: 'Distance: $distanceString km',
               ),
-              icon: await _getCustomMarker(AppAssets.signUp), // Custom marker for doctor
+              icon: BitmapDescriptor.defaultMarker,
             ),
           );
 
@@ -94,7 +104,7 @@ class _MapScreenState extends State<MapScreen> {
                 LatLng(userLat, userLng),
                 LatLng(docLat, docLng),
               ],
-              color: Colors.blue,
+              color: _getPolylineColor(doc.id),
               width: 2,
             ),
           );
@@ -109,21 +119,23 @@ class _MapScreenState extends State<MapScreen> {
     });
   }
 
-  Future<BitmapDescriptor> _getCustomMarker(String asset) async {
-    return await BitmapDescriptor.asset(
-      ImageConfiguration(size: Size(48, 48)),
-      asset,
-    );
+  Color _getPolylineColor(String docId) {
+    // Generate a color based on the hash code of the docId
+    int hash = docId.hashCode;
+    int r = (hash & 0xFF0000) >> 16;
+    int g = (hash & 0x00FF00) >> 8;
+    int b = (hash & 0x0000FF);
+    return Color.fromARGB(255, r, g, b);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Find Nearby Doctors'),
+        title: const Text('Find Nearby Doctors'),
       ),
       body: currentPosition == null
-          ? Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator())
           : GoogleMap(
         onMapCreated: (controller) {
           setState(() {
@@ -131,9 +143,10 @@ class _MapScreenState extends State<MapScreen> {
           });
         },
         initialCameraPosition: CameraPosition(
-          target: currentPosition != null
-              ? LatLng(currentPosition!.latitude, currentPosition!.longitude)
-              : LatLng(0, 0), // Fallback to a default location
+          target: LatLng(
+            currentPosition!.latitude,
+            currentPosition!.longitude,
+          ),
           zoom: 14,
         ),
         markers: _markers,

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 final ThemeData appTheme = ThemeData(
   primaryColor: const Color(0xFF4A90E2),
   colorScheme: ColorScheme.fromSwatch().copyWith(
-    secondary: const Color(0xFFFF6B6B),
-  ),
+    secondary: const Color(0xFFFF6B6B),),
+
   scaffoldBackgroundColor: const Color(0xFFFFFFFF),
   cardColor: const Color(0xFFF5F5F5),
   textTheme: const TextTheme(

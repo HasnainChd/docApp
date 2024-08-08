@@ -9,7 +9,7 @@ import '../setting/setting_view.dart';
 import 'home_view.dart';
 
 class Home extends StatefulWidget {
-  const Home({super.key,});
+  const Home({super.key});
 
   @override
   State<Home> createState() => _HomeState();
@@ -17,11 +17,13 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int selectedIndex = 0;
-  //this is screen list for bottom navbar
-  List screenList = [
+  final GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
+
+  // This is the screen list for bottom navbar
+  final List<Widget> screenList = [
     const HomeView(),
     const AppointmentView(),
-    MapScreen(),
+    const MapScreen(),
     const Category(),
     const SettingView(),
   ];
@@ -29,10 +31,9 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screenList.elementAt(selectedIndex),
-      //bottom navigation bar for showing all tabs
+      body: screenList[selectedIndex],
       bottomNavigationBar: CurvedNavigationBar(
-        key: GlobalKey(),
+        key: _bottomNavigationKey,
         index: selectedIndex,
         items: <Widget>[
           Icon(Icons.home, size: 30, color: selectedIndex == 0 ? appTheme.colorScheme.secondary : Colors.black87),
@@ -47,8 +48,10 @@ class _HomeState extends State<Home> {
         animationCurve: Curves.decelerate,
         animationDuration: const Duration(milliseconds: 600),
         onTap: (index) {
-          setState(() {
-            selectedIndex = index;
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            setState(() {
+              selectedIndex = index;
+            });
           });
         },
         letIndexChange: (index) => true,

@@ -1,3 +1,4 @@
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
@@ -93,15 +94,14 @@ class AuthController extends GetxController {
   }
 
   void signout() async {
-  try {
-  await FirebaseAuth.instance.signOut();
-  Fluttertoast.showToast(msg: "Sign out successful");
-  } catch (e) {
-  if (kDebugMode) {
-    print("Sign out error: $e");
+    try {
+      await FirebaseAuth.instance.signOut();
+      Fluttertoast.showToast(msg: "Sign out successful");
+    } catch (e) {
+      if (kDebugMode) {
+        print("Sign out error: $e");
+      }
+      Fluttertoast.showToast(msg: "Sign out failed: $e");
+    }
   }
-  Fluttertoast.showToast(msg: "Sign out failed: $e");
-  }
-  }
-  }
-
+}

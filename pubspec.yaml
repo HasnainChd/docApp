@@ -50,6 +50,7 @@ dependencies:
   curved_navigation_bar: ^1.0.5
   geocoding: ^3.0.0
   flutter_image: ^4.1.11
+  shared_preferences: ^2.2.3
 
 
 dev_dependencies:

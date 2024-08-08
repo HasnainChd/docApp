@@ -98,7 +98,7 @@ class _LoginViewState extends State<LoginView> {
                                 Get.to((const AppointmentView()));
                               }else {
                                 // signing as a user
-                                Get.to((const Home()));
+                                Get.offAll((const Home()));
                               }
                             }
                           }),

@@ -20,13 +20,14 @@ class Category extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
+        //all Categories
         child: GridView.builder(
           physics: const BouncingScrollPhysics(),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             crossAxisSpacing: 12,
             mainAxisSpacing: 13,
-            mainAxisExtent: 230,
+            mainAxisExtent: 210,
           ),
           itemCount: iconList.length,
           itemBuilder: (context, index) {

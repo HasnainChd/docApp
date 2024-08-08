@@ -18,20 +18,23 @@ class AppStrings{
    signup = "Signup",
    alreadyHaveAccount = "Already have an account?",
    dontHaveAccount = "Don't have an account?",
-   body="Body",
-   ear = "Ear",
+
+  medical="Medical",
+  ear = "Ear",
   eye = "Eye",
-  setting = "Setting",
-  category = "Category",
-  doctor = "Doctor",
   kidney = "Kidney",
   lungs = "Lungs",
   stomach = "Stomach",
+  dental = "Dental",
+  heart= "Heart",
+  
+  doctor = "Doctor",
   changePassword = "Change Password",
   termsCondition = "Terms & Condition",
   aboutUs = 'About US',
   signOut = "SignOut",
-  teeth = "Teeth";
+  setting = "Setting",
+  category = "Category";
 
 }
 

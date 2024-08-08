@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:medi_app/consts/colors.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 import '../../consts/images.dart';
 import '../login_view_doctor/login_view_doctor.dart';
@@ -52,7 +51,7 @@ class SearchView extends StatelessWidget {
             padding: const EdgeInsets.all(10.0),
             child: GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 1,
+                crossAxisCount: 2,
                 mainAxisExtent: 170,
                 crossAxisSpacing: 8,
                 mainAxisSpacing: 8,
@@ -91,15 +90,6 @@ class SearchView extends StatelessWidget {
                               style: const TextStyle(),
                             ),
                           ],
-                        ),
-                        VxRating(
-                          onRatingUpdate: (value) {},
-                          selectionColor: Colors.yellow,
-                          normalColor: Colors.black45,
-                          count: 5,
-                          maxRating: 5,
-                          value: double.parse(doc['docRating'].toString()),
-                          stepInt: true,
                         ),
                       ],
                     ),

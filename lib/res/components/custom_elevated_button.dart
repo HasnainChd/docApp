@@ -10,16 +10,19 @@ class CustomElevatedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 250,
-      child: ElevatedButton(
-        onPressed: onTap,
-        style: ElevatedButton.styleFrom(
+      width: double.infinity,
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: ElevatedButton(
+          onPressed: onTap,
+          style: ElevatedButton.styleFrom(
+            shape: const RoundedRectangleBorder(),
+            backgroundColor: appTheme.primaryColor,
+            foregroundColor: Colors.black,
 
-          backgroundColor: appTheme.primaryColor,
-          foregroundColor: Colors.black,
-
+          ),
+          child: Text(buttonText),
         ),
-        child: Text(buttonText),
       ),
     );
   }

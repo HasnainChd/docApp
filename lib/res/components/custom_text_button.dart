@@ -8,7 +8,7 @@ class CustomTextButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(onPressed: onTap, child: Text(buttonText,style:
-        const TextStyle(fontFamily: "Galada",color: Colors.black,fontSize: 17),
+        const TextStyle(fontSize: 15),
     ),
     );
   }

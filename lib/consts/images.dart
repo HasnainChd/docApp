@@ -13,7 +13,9 @@ class AppAssets{
     male = "assets/images/male.png",
     female = "assets/images/female.png",
     person="assets/images/person.png",
-    welcome='assets/images/welcome.jpg';
+    welcome='assets/images/welcome.jpg',
+    forgot='assets/images/forgot.png';
+
 
 
 

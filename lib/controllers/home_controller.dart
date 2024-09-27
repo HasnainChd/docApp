@@ -12,12 +12,27 @@ class HomeController extends GetxController {
     return doctors;
   }
 
-  // Filter doctors by category
-  Future<QuerySnapshot<Map<String, dynamic>>> filterDoctorsByCategory(String category) async {
-    var doctors = FirebaseFirestore.instance
+  // Search doctors by name or category
+  Future<QuerySnapshot<Map<String, dynamic>>> searchDoctors(String searchText) async {
+    // First, try searching by name
+    var doctorsByName = FirebaseFirestore.instance
         .collection('doctors')
-        .where('docCategory', isEqualTo: category)
+        .where('docName', isEqualTo: searchText)
         .get();
+
+    // If searchText doesn't match a name, search by category
+    var doctorsByCategory = FirebaseFirestore.instance
+        .collection('doctors')
+        .where('docCategory', isEqualTo: searchText)
+        .get();
+
+    var doctors = await doctorsByName;
+
+    // If no results found by name, search by category
+    if (doctors.docs.isEmpty) {
+      doctors = await doctorsByCategory;
+    }
+
     return doctors;
   }
 

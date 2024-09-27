@@ -82,14 +82,9 @@ class SearchView extends StatelessWidget {
                             AppAssets.signUp,
                           ),
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              doc['docName'],
-                              style: const TextStyle(),
-                            ),
-                          ],
+                        Text(
+                          doc['docName'],
+                          style: const TextStyle(),
                         ),
                       ],
                     ),

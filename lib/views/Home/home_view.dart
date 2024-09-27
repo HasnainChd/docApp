@@ -36,10 +36,6 @@ class _HomeViewState extends State<HomeView> {
     var controller2 = Get.put(SettingController());
     var controller = Get.put(HomeController());
 
-    Color primaryColor = appTheme.primaryColor;
-    Color secondaryColor = appTheme.colorScheme.secondary;
-    Color textColor = appTheme.textTheme.bodyLarge!.color!;
-
     return Scaffold(
       appBar: AppBar(
         title: Obx(
@@ -53,7 +49,7 @@ class _HomeViewState extends State<HomeView> {
         child: Column(
           children: [
             // Search Container
-            searchBar(primaryColor, controller, secondaryColor),
+            searchBar(appTheme.primaryColor, controller, Colors.black),
             Padding(
               padding: const EdgeInsets.all(10),
               child: Column(
@@ -75,7 +71,7 @@ class _HomeViewState extends State<HomeView> {
                   // Category
                   SizedBox(
                     height: 100,
-                    child: categoryView(secondaryColor, textColor),
+                    child: categoryView(appTheme.secondaryHeaderColor, Colors.black),
                   ),
                   const Gap(10),
                   // Symptoms text
@@ -148,12 +144,14 @@ class _HomeViewState extends State<HomeView> {
               textController: controller.searchQueryController,
               iconButton: IconButton(
                 onPressed: () {
-                  Get.to(
+                  if(controller.searchQueryController.text.isNotEmpty){
+                    Get.to(
                     () => SearchView(
                         searchQuery: controller.searchQueryController.text),
                   );
+                  }
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.search,
                   color: Colors.blueGrey,
                 ),
@@ -240,7 +238,7 @@ class _HomeViewState extends State<HomeView> {
             padding: const EdgeInsets.all(10),
             margin: const EdgeInsets.only(right: 8),
             decoration: BoxDecoration(
-              color: secondaryColor.withOpacity(0.1),
+              color: appTheme.secondaryHeaderColor,
               borderRadius: BorderRadius.circular(15),
             ),
             child: Column(

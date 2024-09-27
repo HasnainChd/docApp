@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../controllers/auth_controller.dart';
 
 class WaitingScreen extends StatefulWidget {
@@ -12,8 +11,8 @@ class WaitingScreen extends StatefulWidget {
 class _WaitingScreenState extends State<WaitingScreen> {
   @override
   void initState() {
-    AuthController().isUserAlreadyLogin();
     super.initState();
+    AuthController().isUserAlreadyLogin();
   }
 
   @override
@@ -25,16 +24,17 @@ class _WaitingScreenState extends State<WaitingScreen> {
           Center(
             child: CircularProgressIndicator(),
           ),
-          SizedBox(height: 15,),
+          SizedBox(height: 15),
           Center(
-              child: Padding(
-                padding: EdgeInsets.all(12.0),
-                child: Text(
-                  textAlign: TextAlign.center,
-                            'No Internet Connection,Turn on Wifi or Mobile Data to use the App and restart the app',
-                            style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),
-                          ),
-              ))
+            child: Padding(
+              padding: EdgeInsets.all(12.0),
+              child: Text(
+                'Internet Connectivity Problem...',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              ),
+            ),
+          ),
         ],
       ),
     );

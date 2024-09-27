@@ -27,9 +27,9 @@ class AppointmentView extends StatelessWidget {
             ? [
           IconButton(
             onPressed: () {
-              AuthController().signout();
+              AuthController().signOut();
             },
-            icon: const Icon(Icons.power_settings_new_outlined),
+            icon: const Icon(Icons.logout),
           ),
         ]
             : null, // Hides the button if isDoctor is false

@@ -42,7 +42,7 @@ class CategoryDetailsView extends StatelessWidget {
                             crossAxisCount: 2,
                             mainAxisExtent: 170,
                             crossAxisSpacing: 8,
-                            mainAxisSpacing: 8),
+                            mainAxisSpacing: 8,),
                     itemCount: data?.length ?? 0,
                     itemBuilder: (context, index) {
                       //background container

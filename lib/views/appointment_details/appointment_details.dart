@@ -4,6 +4,7 @@ import 'package:gap/gap.dart';
 
 class AppointmentDetails extends StatelessWidget {
   final DocumentSnapshot doc;
+
   const AppointmentDetails({super.key, required this.doc});
 
   @override
@@ -18,26 +19,32 @@ class AppointmentDetails extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Card(
-          elevation: 4.0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _buildDetailSection("Appointment Day", doc['appDay']),
-                const Gap(20),
-                _buildDetailSection("Appointment Time", doc['appTime']),
-                const Gap(20),
-                _buildDetailSection("Mobile Number", doc['appPhone']),
-                const Gap(20),
-                _buildDetailSection("Full Name", doc['appName']),
-                const Gap(20),
-                _buildDetailSection("Message", doc['appMessage']),
-              ],
+        child: SizedBox(
+          width: MediaQuery.sizeOf(context).width,
+          height: MediaQuery.sizeOf(context).height,
+          child: Card(
+            //surfaceTintColor: Colors.white,
+            shadowColor: Colors.grey.shade600,
+            elevation: 5.0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildDetailSection("Appointment Day", doc['appDay']),
+                  const Gap(20),
+                  _buildDetailSection("Appointment Time", doc['appTime']),
+                  const Gap(20),
+                  _buildDetailSection("Mobile Number", doc['appPhone']),
+                  const Gap(20),
+                  _buildDetailSection("Full Name", doc['appName']),
+                  const Gap(20),
+                  _buildDetailSection("Message", doc['appMessage']),
+                ],
+              ),
             ),
           ),
         ),
@@ -54,7 +61,7 @@ class AppointmentDetails extends StatelessWidget {
           style: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 18,
-            color: Colors.grey,
+            color: Colors.blue,
           ),
         ),
         const Gap(8),

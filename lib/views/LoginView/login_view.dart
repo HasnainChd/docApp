@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-
-
 import '../../consts/images.dart';
 import '../../consts/strings.dart';
 import '../../controllers/auth_controller.dart';
@@ -29,7 +27,7 @@ class _LoginViewState extends State<LoginView> {
     var controller = Get.put(AuthController());
     return Scaffold(
       body: Container(
-        margin: const EdgeInsets.only(top: 30),
+        margin: const EdgeInsets.only(top: 10),
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
@@ -108,6 +106,7 @@ class _LoginViewState extends State<LoginView> {
                               Expanded(
                                 child: CustomElevatedButton(
                                   buttonText: "Login as Doctor",
+                                  fontSize: 13,
                                   isLoading: isLoadingDoctor,
                                   onTap: () async {
                                     if (_formKey.currentState!.validate()) {

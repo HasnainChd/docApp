@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 import '../../consts/colors.dart';
@@ -6,9 +8,11 @@ class CustomElevatedButton extends StatelessWidget {
   final Function()? onTap;
   final String buttonText;
   final bool isLoading;
+  final double? fontSize;
 
   const CustomElevatedButton({
     super.key,
+    this.fontSize,
     required this.buttonText,
     required this.onTap,
     this.isLoading = false,
@@ -34,7 +38,7 @@ class CustomElevatedButton extends StatelessWidget {
               : Text(
             // textAlign: TextAlign.center,
                   buttonText,
-                  style: const TextStyle(fontSize: 13,fontWeight: FontWeight.w500),
+                  style:  TextStyle(fontSize: fontSize,fontWeight: FontWeight.bold),
                 ),
         ),
       ),

@@ -33,10 +33,10 @@ var settingList = [
   AppStrings.aboutUs,
   AppStrings.signOut,
 
-];
+ ];
 
 var settingListIcon = [
   Icons.note,
   Icons.info_rounded,
-  Icons.logout
-];
+  Icons.logout,
+ ];

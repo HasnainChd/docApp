@@ -181,6 +181,7 @@ class _SignupViewState extends State<SignupView> {
                     const Gap(40),
                     CustomElevatedButton(
                       buttonText: "Sign Up",
+                      fontSize: 20,
                       onTap: () async {
                         if (_formKey.currentState!.validate()) {
                           await controller.signupUser(isDoctor);

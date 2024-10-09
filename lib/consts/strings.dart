@@ -25,7 +25,7 @@ class AppStrings{
    kidney = "Kidney",
    lungs = "Lungs",
    stomach = "Stomach",
-   dental = "Dental",
+   dental = "Dentist",
    heart= "Heart",
   
    doctor = "Doctor",
